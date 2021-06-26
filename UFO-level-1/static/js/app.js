@@ -1,17 +1,20 @@
 // from data.js
 var tableData = data;
-console.log(tableData)
+
 // YOUR CODE HERE!
 
+// Console.log the data from data.js
+
+console.log(tableData)
 
 // Code to reference the table and do the columns and append to tr
 var tbody = d3.select("tbody");
-tableData.forEach(function(ufoSighting) {
-    console.log(ufoSighting);
+tableData.forEach(function(sighting) {
+    console.log(sighting);
     var row = tbody.append("tr");
 
     // wanted to use Object.entries to console.log for each sighthing
-    Object.entries(ufoSighting).forEach(function([key, value]) {
+    Object.entries(sighting).forEach(function([key, value]) {
       console.log(key, value);
       var cell = row.append("td");
       cell.text(value);
@@ -28,19 +31,14 @@ button.on("click", function() {
     var inputElement = d3.select("#datetime");
     var inputValue = inputElement.property("value");
     console.log(inputValue);
-    var filteredData = tableData.filter(sighting => sighting.datetime === inputValue);
-    console.log(filteredData);
+    var inputCommand = tableData.filter(sighting1 => sighting1.datetime === inputValue);
+    console.log(inputCommand);
 
-    filteredData.forEach(function(selections) {
-
-    console.log(selections);
-
-    // I wanted to Append one table row for each sighting
-    var row = tbody.append("tr");
-    Object.entries(selections).forEach(function([key, value]) {
-        console.log(key, value);
-        var cell = row.append("td");
-        cell.text(value);
+    inputCommand.forEach((report) => {
+        var row = tbody.append('tr');
+        Object.entries(report).forEach(([key, value]) => {
+            var cell = row.append('td');
+            cell.text(value);
+        });
     });
-});
 });
