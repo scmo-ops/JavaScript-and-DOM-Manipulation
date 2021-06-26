@@ -33,13 +33,13 @@ button.on("click", function() {
     var inputValue = inputElement.property("value");
     
     // Now to filter the entries accordign to what the user asks for
-    var inputCommand = tableData.filter(sighting => sighting.datetime === inputValue
+    var filteredData = tableData.filter(sighting => sighting.datetime === inputValue
         || sighting.city === inputValue || sighting.state === inputValue || sighting.country === inputValue
         || sighting.shape === inputValue || sighting.comments === inputValue);
 
-    console.log(inputCommand);
+    console.log(filteredData);
 
-    inputCommand.forEach((report) => {
+    filteredData.forEach((report) => {
         var row = tbody.append('tr');
         Object.entries(report).forEach(([key, value]) => {
             var cell = row.append('td');

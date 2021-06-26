@@ -31,10 +31,10 @@ button.on("click", function() {
     var inputElement = d3.select("#datetime");
     var inputValue = inputElement.property("value");
     console.log(inputValue);
-    var inputCommand = tableData.filter(sighting1 => sighting1.datetime === inputValue);
-    console.log(inputCommand);
+    var filteredData = tableData.filter(sighting1 => sighting1.datetime === inputValue);
+    console.log(filteredData);
 
-    inputCommand.forEach((report) => {
+    filteredData.forEach((report) => {
         var row = tbody.append('tr');
         Object.entries(report).forEach(([key, value]) => {
             var cell = row.append('td');
